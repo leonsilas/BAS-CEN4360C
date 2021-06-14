@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './dummy.dart';
+import 'scrollButton.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _index = 0;
+  var _indexA = 0;
   var _screenIndex = 0;
 
   void _incrementText() {
@@ -22,6 +24,16 @@ class _MyAppState extends State<MyApp> {
         _index = 0;
       else
         _index++;
+    });
+  }
+
+  void _incrementRating() {
+    setState(() {
+      print("Next question...");
+      if (_indexA > 2)
+        _indexA = 16;
+      else
+        _indexA++;
     });
   }
 
@@ -58,7 +70,37 @@ class _MyAppState extends State<MyApp> {
       "Alright, I'm out of dialogue for you.",
       "So let me just reiterate the point of all of this.",
       "What did you think this was going to do?"
-    ];
+    ]; //end of dummyText
+
+    var rateAppText = [
+      {
+        "questionText": "How are you liking the app so far?",
+        "answerText": [
+          {"choice": "It\'s great!", "score": 3},
+          {"choice": "Acceptable.", "score": 2},
+          {"choice": "Could use some work.", "score": 1},
+          {"choice": "What even is this?", "score": 0}
+        ]
+      },
+      {
+        "questionText": "Did you see all the dialogue available?",
+        "answerText": [
+          {"choice": "Yes!", "score": 3},
+          {"choice": "There's more dialogue?", "score": 2},
+          {"choice": "No.", "score": 1},
+          {"choice": "Please seek help.", "score": 0}
+        ]
+      },
+      {
+        "questionText": "I really appreciate the feedback! Thank you!",
+        "answerText": [
+          {"choice": "You're very welcome!", "score": 3},
+          {"choice": "Anything to help the development.", "score": 2},
+          {"choice": "...", "score": 1},
+          {"choice": "Just stop.", "score": 0}
+        ]
+      }
+    ]; //end of rateAppText
 
     //the app itself
     return MaterialApp(
@@ -81,15 +123,9 @@ class _MyAppState extends State<MyApp> {
                         foregroundColor:
                             MaterialStateProperty.all<Color>(Colors.black)),
                     child: Text("Test Button")),
+                ScrollButton(_incrementText, _longPressMeme),
                 ElevatedButton(
-                    onPressed: _incrementText,
-                    onLongPress: _longPressMeme,
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.cyan[700])),
-                    child: Text("Tap Me!")),
-                ElevatedButton(
-                    onPressed: () => print("The button works. Hopefully."),
+                    onPressed: () => print("And this one too?"),
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all<Color>(Colors.white),
@@ -98,7 +134,7 @@ class _MyAppState extends State<MyApp> {
                     child: Text("Test Button")),
               ],
             ),
-            Dummy(dummyText[_index])
+            Dummy(dummyText[_index]), 
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
