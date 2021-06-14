@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     //stuff to use within the materialapp
-    var dummyText = [
+    const dummyText = const [
       "This is a test to see how my app text works",
       "When you tap the button the text changes!",
       "It'll happen every time you click on it~",
@@ -72,36 +72,6 @@ class _MyAppState extends State<MyApp> {
       "What did you think this was going to do?"
     ]; //end of dummyText
 
-    var rateAppText = [
-      {
-        "questionText": "How are you liking the app so far?",
-        "answerText": [
-          {"choice": "It\'s great!", "score": 3},
-          {"choice": "Acceptable.", "score": 2},
-          {"choice": "Could use some work.", "score": 1},
-          {"choice": "What even is this?", "score": 0}
-        ]
-      },
-      {
-        "questionText": "Did you see all the dialogue available?",
-        "answerText": [
-          {"choice": "Yes!", "score": 3},
-          {"choice": "There's more dialogue?", "score": 2},
-          {"choice": "No.", "score": 1},
-          {"choice": "Please seek help.", "score": 0}
-        ]
-      },
-      {
-        "questionText": "I really appreciate the feedback! Thank you!",
-        "answerText": [
-          {"choice": "You're very welcome!", "score": 3},
-          {"choice": "Anything to help the development.", "score": 2},
-          {"choice": "...", "score": 1},
-          {"choice": "Just stop.", "score": 0}
-        ]
-      }
-    ]; //end of rateAppText
-
     //the app itself
     return MaterialApp(
       theme: ThemeData(
@@ -115,23 +85,7 @@ class _MyAppState extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                    onPressed: () => print("The button works. Hopefully."),
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.black)),
-                    child: Text("Test Button")),
-                ScrollButton(_incrementText, _longPressMeme),
-                ElevatedButton(
-                    onPressed: () => print("And this one too?"),
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
-                        foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.black)),
-                    child: Text("Test Button")),
+                ScrollButton(_incrementText, _longPressMeme)
               ],
             ),
             Dummy(dummyText[_index]), 
@@ -145,11 +99,19 @@ class _MyAppState extends State<MyApp> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.school),
-              label: "Schedule",
+              label: "Tasks",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_outlined),
               label: "Calendar",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: "Exams",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: "Schedule",
             ),
           ],
           currentIndex: _screenIndex,
