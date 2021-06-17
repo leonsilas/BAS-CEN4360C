@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crash_course/constants.dart';
+import 'package:flutter_crash_course/finalGrade.dart';
+import 'package:flutter_crash_course/testpage.dart';
 import './dummy.dart';
-import './scrollButton.dart';
 import './theme.dart';
+import './hamburger.dart';
 
 class DefaultPage extends StatefulWidget {
   _DefaultPageState createState() => _DefaultPageState();
 }
 
 class _DefaultPageState extends State<DefaultPage> {
-var _index = 0;
   var _screenIndex = 0;
-
-  void _incrementText() {
-    setState(() {
-      print("I tapped this~!");
-      if (_index > 14)
-        _index = 0;
-      else
-        _index++;
-    });
-  }
-
-  void _longPressMeme() {
-    setState(() {
-      _index = 16;
-    });
-  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -34,46 +19,36 @@ var _index = 0;
     });
   }
 
+  final _tabWidgets = [
+    Dummy("Home"),
+    Dummy("Tasks"),
+    Dummy("Calendar"),
+    TestScreen(),
+    EasyA(),
+  ];
+
+  final _headerText = [
+    "Home",
+    "Tasks",
+    "Calendar",
+    "Exams",
+    "Schedule",
+    "Profile",
+    "Settings"
+  ];
+
   @override
   Widget build(BuildContext context) {
-    //stuff to use within the materialapp
-    const dummyText = const [
-      "This is a test to see how my app text works",
-      "When you tap the button the text changes!",
-      "It'll happen every time you click on it~",
-      "Yep, even if you click on it now.",
-      "Or now.",
-      "...",
-      "Are you going to keep tapping?",
-      "There's other things you could be doing right now.",
-      "Seriously.  You can stop at any moment.",
-      "You're just trying to exhaust dialogue now aren't you?",
-      "Well it's not going to happen, so try again buddy.",
-      "...",
-      "...",
-      "...",
-      "Alright, I'm out of dialogue for you.",
-      "So let me just reiterate the point of all of this.",
-      "What did you think this was going to do?"
-    ]; //end of dummyText
-
-    //the app itself
     return MaterialApp(
       theme: darkThemeData(context),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-            title: const Text("THIS IS MY APP HEADER"), centerTitle: true),
-        body: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ScrollButton(_incrementText, _longPressMeme)
-              ],
-            ),
-            Dummy(dummyText[_index]), 
-          ],
+            title: Text(_headerText[_screenIndex])),
+        body: _tabWidgets[_screenIndex],
+        drawer: Container(
+          width: 200,
+          child: HamburgerMenu(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
