@@ -6,7 +6,7 @@ This is my first app that I'm creating using Flutter.  Flutter utilizes the Dart
 ## Project Goal
 
 The goal of this project is to be able to create some sort of working application for students to be able to manage their classes, schedule, and times in an all encompassing mobile app.
-Features will be pushed here as I learn and hopefully it will be complete by the end of June 2021.
+Features will be pushed here as I learn and hopefully it will be complete by the end of the year, with a working structure by the end of June 2021.
 
 Thanks for joining me on this journey and I hope you enjoy my work!
 
