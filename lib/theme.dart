@@ -5,7 +5,7 @@ ThemeData lightThemeData(BuildContext context) {
   return ThemeData.light().copyWith(
     brightness: Brightness.dark, 
     primaryColor: aPrimaryColor,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: aMainColorLight,
     //appBarTheme: appBarTheme,
     iconTheme: IconThemeData(color: aMainColorLight),
     colorScheme: ColorScheme.light(
@@ -20,7 +20,7 @@ ThemeData darkThemeData(BuildContext context) {
   return ThemeData.dark().copyWith(
     brightness: Brightness.dark, 
     primaryColor: aPrimaryColor,
-    scaffoldBackgroundColor: aMainColorLight,
+    scaffoldBackgroundColor: aMainColorDark,
     //appBarTheme: appBarTheme,
     iconTheme: IconThemeData(color: aMainColorDark),
     colorScheme: ColorScheme.dark(
